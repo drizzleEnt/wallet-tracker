@@ -5,6 +5,9 @@ LOCAL_MIGRATION_DIR=$(MIGRATION_DIR)
 LOCAL_MIGRATION_DSN="host=localhost port=$(PG_PORT) dbname=$(PG_DATABASE_NAME) user=$(PG_USER) password=$(PG_PASSWORD) sslmode=disable"
 
 run:
+	cd frontend
+	vue serve
+	cd ..
 	go run backend/cmd/main.go
 
 local-migration-status:

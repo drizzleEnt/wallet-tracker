@@ -1,12 +1,18 @@
 package handler
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/drizzleent/wallet-tracker/backend/internal/service"
+	"github.com/gin-gonic/gin"
+)
 
 type handler struct {
+	service service.AuthService
 }
 
-func NewHandler() *handler {
-	return &handler{}
+func NewHandler(srv service.AuthService) *handler {
+	return &handler{
+		service: srv,
+	}
 }
 
 func (h *handler) InitRoutes() *gin.Engine {
@@ -15,7 +21,7 @@ func (h *handler) InitRoutes() *gin.Engine {
 	api := router.Group("/")
 	{
 		api.POST("/register", h.Register)
-		api.GET("/users/{address:^0x[a-fA-F0-9]{40}$}/nonce", h.UserNonce)
+		api.GET("/users/:id/nonce", h.UserNonce)
 		api.POST("/signin", h.Signin)
 		api.GET("/welcome", h.Welcome)
 	}

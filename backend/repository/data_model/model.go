@@ -1,4 +1,4 @@
-package model
+package datamodel
 
 type User struct {
 	Address string

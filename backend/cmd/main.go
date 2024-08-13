@@ -6,6 +6,8 @@ import (
 	"time"
 
 	"github.com/drizzleent/wallet-tracker/backend/internal/api/handler"
+	authSrv "github.com/drizzleent/wallet-tracker/backend/internal/service/auth"
+	authRepo "github.com/drizzleent/wallet-tracker/backend/repository/auth"
 )
 
 const (
@@ -16,7 +18,7 @@ func main() {
 
 	srv := &http.Server{
 		Addr:           "localhost:8001",
-		Handler:        handler.NewHandler().InitRoutes(),
+		Handler:        handler.NewHandler(authSrv.NewService(authRepo.NewAuthRepository())).InitRoutes(),
 		ReadTimeout:    10 * time.Second,
 		WriteTimeout:   10 * time.Second,
 		MaxHeaderBytes: 1 << 20,
