@@ -6,7 +6,7 @@ LOCAL_MIGRATION_DSN="host=localhost port=$(PG_PORT) dbname=$(PG_DATABASE_NAME) u
 
 run:
 	cd frontend
-	vue serve
+	sudo yarn serve
 	cd ..
 	go run backend/cmd/main.go
 

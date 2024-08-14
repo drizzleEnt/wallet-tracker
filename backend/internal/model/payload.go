@@ -6,6 +6,6 @@ type RegisterPayload struct {
 
 type SigningPayload struct {
 	Address string `json:"address"`
-	Nonce   string `json:"address"`
-	Sig     string `json:"address"`
+	Nonce   string `json:"nonce"`
+	Sig     string `json:"sig"`
 }

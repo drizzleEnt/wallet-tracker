@@ -3,8 +3,8 @@ package handler
 import (
 	"net/http"
 
-	"github.com/drizzleent/wallet-tracker/backend/converter"
 	"github.com/drizzleent/wallet-tracker/backend/internal/api"
+	"github.com/drizzleent/wallet-tracker/backend/internal/converter"
 	"github.com/drizzleent/wallet-tracker/backend/internal/model"
 	"github.com/gin-gonic/gin"
 )

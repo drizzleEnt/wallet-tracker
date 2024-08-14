@@ -8,7 +8,7 @@ import (
 
 type AuthService interface {
 	Register(context.Context, *model.RegisterPayload) (*model.User, error)
-	Signin()
+	Signin(*model.SigningPayload) (*model.User, error)
 	UserNonce(context.Context, string) (*model.User, error)
 	Welcome()
 }

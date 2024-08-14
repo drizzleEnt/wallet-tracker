@@ -3,24 +3,24 @@ package handler
 import (
 	"net/http"
 
-	"github.com/drizzleent/wallet-tracker/backend/converter"
 	"github.com/drizzleent/wallet-tracker/backend/internal/api"
+	"github.com/drizzleent/wallet-tracker/backend/internal/converter"
 	"github.com/gin-gonic/gin"
 )
 
 const (
-	idParams = "id"
+	addressParams = "address"
 )
 
 func (h *handler) UserNonce(c *gin.Context) {
-	id, ok := c.Params.Get(idParams)
+	id, ok := c.Params.Get(addressParams)
 
 	if !ok {
 		api.NewErrorResponse(c, http.StatusBadRequest, "id is requared")
 		return
 	}
 
-	if err := converter.ValidateId(id); err != nil {
+	if err := converter.ValidateAddress(id); err != nil {
 		api.NewErrorResponse(c, http.StatusBadRequest, "invalid id"+err.Error())
 		return
 	}
