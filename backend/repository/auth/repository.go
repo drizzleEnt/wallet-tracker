@@ -2,7 +2,6 @@ package auth
 
 import (
 	"errors"
-	"fmt"
 	"sync"
 
 	"github.com/drizzleent/wallet-tracker/backend/internal/model"
@@ -43,8 +42,6 @@ func (r *repo) Register(p *model.RegisterPayload) (*model.User, error) {
 
 	r.users[u.Address] = *u
 
-	fmt.Println(r.users)
-
 	return converter.FromDataUserToModelUser(u), nil
 }
 
@@ -71,6 +68,7 @@ func (r *repo) Update(user *model.User) error {
 func (r *repo) Get(address string) (*model.User, error) {
 	r.m.Lock()
 	defer r.m.Unlock()
+
 	u, exist := r.users[address]
 	if !exist {
 		return nil, errors.New("user not exist")

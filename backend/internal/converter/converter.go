@@ -25,9 +25,9 @@ func ValidateSignPayload(p *model.SigningPayload) error {
 		return errors.New("invalid address")
 	}
 
-	if !nonceRegex.MatchString(p.Nonce) {
-		return errors.New("invalid nonce")
-	}
+	// if !nonceRegex.MatchString(p.Nonce) {
+	// 	return errors.New("invalid nonce")
+	// }
 
 	if len(p.Sig) == 0 {
 		return errors.New("signature is missing")

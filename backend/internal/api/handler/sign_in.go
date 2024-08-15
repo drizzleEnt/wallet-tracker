@@ -22,13 +22,18 @@ func (h *handler) Signin(c *gin.Context) {
 		return
 	}
 
-	resp, err := h.service.Signin(&p)
+	token, err := h.service.Signin(&p)
 
 	if err != nil {
 		api.NewErrorResponse(c, http.StatusInternalServerError, err.Error())
 		return
 	}
 
-	c.JSON(http.StatusOK, resp)
+	resp := struct {
+		AccessToken string `json:"access"`
+	}{
+		AccessToken: token,
+	}
 
+	c.JSON(http.StatusOK, resp)
 }

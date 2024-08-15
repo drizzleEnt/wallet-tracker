@@ -32,7 +32,7 @@
       address = ethereum.selectedAddress
     }
     const [status_code, nonce] = await get_nonce()
-    if (status_code === 404) {
+    if (status_code === 500) {
       const registered = await register()
       if (!registered) {
         return
